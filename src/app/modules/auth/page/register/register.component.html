@@ -1,1 +1,30 @@
-<p>register works!</p>
+<div>
+  <h2 class="form-header">ثبت نام</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>ایمیل</mat-label>
+      <input
+        matInput
+        placeholder="ایمیل خود را وارد کنید"
+        type="email"
+        id="email"
+        formControlName="email"
+      />
+      <mat-error *ngIf="registerForm?.get('email')?.hasError('required')">
+        ایمیل مورد نیاز است
+      </mat-error>
+      <mat-error *ngIf="registerForm?.get('email')?.hasError('email')">
+        ایمیل اشتباه است
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="mt-3"
+      [disabled]="isLoading"
+    >
+      ثبت نام
+    </button>
+  </form>
+</div>

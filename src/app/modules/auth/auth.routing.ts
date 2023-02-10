@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CompleteRegisterComponent } from './page/complete-register/complete-register.component';
 import { LoginComponent } from './page/login/login.component';
 import { RegisterComponent } from './page/register/register.component';
+import { SentEmailComponent } from './page/sent-email/sent-email.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,14 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
+      },
+      {
+        path: 'sent-email',
+        component: SentEmailComponent,
+      },
+      {
+        path: 'complete-register',
+        component: CompleteRegisterComponent,
       },
     ],
   },

@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AuthGuard } from './guard/auth.guard';
 
 import { throwIfAlreadyLoaded } from './guard/module-import.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
+  imports: [CommonModule, HttpClientModule],
   providers: [AuthGuard],
-  imports: [CommonModule],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

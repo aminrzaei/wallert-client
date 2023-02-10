@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  direction: rtl;
+  background-color: #161616;
+  color: white;
+}
+*,
+*::after,
+*::before {
+  font-family: iransans !important;
+}
