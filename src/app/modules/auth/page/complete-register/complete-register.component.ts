@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/constants/api.constant';
+import { LocalStorageService } from 'src/app/data/service/localstorage.service';
+import { UserService } from 'src/app/data/service/user.service';
 
 @Component({
   selector: 'app-complete-register',
@@ -19,6 +21,8 @@ export class CompleteRegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private http: HttpClient,
+    private user: UserService,
+    private lstorage: LocalStorageService,
   ) {}
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -53,7 +57,8 @@ export class CompleteRegisterComponent implements OnInit {
           if (res.statusCode === 201) {
             const user = res.user;
             const accessToken = res.access_token.token;
-            console.log(user, accessToken);
+            this.user.saveUser(user);
+            this.lstorage.setItem('access-token', accessToken);
 
             this.router.navigate(['/dashboard']);
           }
