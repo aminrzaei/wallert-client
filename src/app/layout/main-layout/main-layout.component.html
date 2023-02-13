@@ -1,4 +1,20 @@
-<div>
-  <h4>Main Layout</h4>
-  <router-outlet></router-outlet>
+<div class="main">
+  <header>
+    <span
+      ><mat-icon *ngIf="!isOpen" (click)="toggleOpen()">menu</mat-icon>
+    </span>
+    <span>والرت</span>
+  </header>
+  <div class="small-menu" *ngIf="isOpen">
+    <mat-icon *ngIf="isOpen" (click)="toggleOpen()">close</mat-icon>
+    <div>some contetn</div>
+  </div>
+  <div class="content">
+    <aside>
+      <a mat-list-item routerLink="/dashboard">پیگیری ها</a>
+    </aside>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

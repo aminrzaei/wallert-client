@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css'],
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+  isOpen = false;
+
+  toggleOpen(): void {
+    this.isOpen = !this.isOpen;
+  }
+}

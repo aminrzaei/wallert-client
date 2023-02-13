@@ -1,0 +1,62 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+header {
+  width: 100%;
+  background-color: rgb(106, 11, 68);
+  padding: 15px;
+}
+
+aside {
+  display: none;
+  min-width: 250px;
+  background-color: rgb(17 17 17);
+  padding: 20px 15px;
+}
+
+main {
+  padding: 25px 20px;
+}
+
+a {
+  display: block;
+  padding: 5px;
+  background-color: rgb(43, 43, 43);
+  transition: all 0.1s linear;
+  width: 100%;
+}
+a:hover {
+  background-color: blue;
+}
+
+mat-icon {
+  cursor: pointer;
+  font-size: 30px;
+}
+.small-menu {
+  background-color: green;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+@media only screen and (min-width: 650px) {
+  aside {
+    display: block;
+  }
+  mat-icon {
+    display: none;
+  }
+  .small-menu {
+    display: none;
+  }
+}

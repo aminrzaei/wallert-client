@@ -13,8 +13,14 @@ body {
   background-color: #161616;
   color: white;
 }
+
 *,
 *::after,
-*::before {
+*::before,
+:not(mat-icon) {
   font-family: iransans !important;
+}
+
+mat-icon {
+  font-family: 'Material Icons' !important;
 }
