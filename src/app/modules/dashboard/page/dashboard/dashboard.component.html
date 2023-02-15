@@ -1,1 +1,35 @@
-<p>dashboard works!</p>
+<div class="tracks-container">
+  <div *ngFor="let track of tracks.getTracks()" class="track-card">
+    <p class="traks-card-title">{{ track.title }}</p>
+    <div class="flex my-3">
+      <div class="ml-3">
+        <p>آخرین بررسی:</p>
+        <p>بازه زمانی:</p>
+        <p>نوع اطلاع رسانی:</p>
+      </div>
+      <div>
+        <p>{{ track.lastCheckTime | jalali }}</p>
+        <p>هر {{ track.interval }} دقیقه</p>
+        <p>{{ contactTypes[track.contactType] }}</p>
+      </div>
+    </div>
+    <div class="flex">
+      <button
+        mat-flat-button
+        [color]="track.isActive ? 'warn' : 'accent'"
+        class="flex-1"
+        (click)="onDisable(track.id, track.isActive)"
+      >
+        {{ track.isActive ? 'غیرفعال کردن' : 'فعال کردن' }}
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        class="flex-1 mr-2"
+        (click)="openDialog(track.id)"
+      >
+        حذف
+      </button>
+    </div>
+  </div>
+</div>
