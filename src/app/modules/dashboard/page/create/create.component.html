@@ -1,1 +1,67 @@
-<p>پیگیری جدید</p>
+<div class="create-track-container">
+  <form [formGroup]="createTrackFrom" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>عنوان</mat-label>
+      <input
+        matInput
+        placeholder="عنوان پیگیری را وارد نمایید"
+        type="text"
+        id="title"
+        formControlName="title"
+      />
+      <mat-error *ngIf="createTrackFrom?.get('title')?.hasError('required')">
+        عنوان مورد نیاز است
+      </mat-error>
+      <mat-error *ngIf="createTrackFrom?.get('title')?.hasError('minlength')">
+        حداقل طول عنوان 2 حرف میباشد
+      </mat-error>
+      <mat-error *ngIf="createTrackFrom?.get('title')?.hasError('maxlength')">
+        حداکثر طول عنوان 250 جرف میباشد
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>دوره ی پیگیری</mat-label>
+      <mat-select id="interval" formControlName="interval">
+        <mat-option value="5">هر 5 دقیقه</mat-option>
+        <mat-option value="10">هر 10 دقیقه</mat-option>
+        <mat-option value="30">هر 30 دقیقه</mat-option>
+        <mat-option value="60">هر 1 ساعت</mat-option>
+        <mat-option value="120">هر 2 ساعت</mat-option>
+        <mat-option value="300">هر 5 ساعت</mat-option>
+        <mat-option value="720">هر 12 ساعت</mat-option>
+        <mat-option value="1440">هر 24 ساعت</mat-option>
+      </mat-select>
+      <mat-error *ngIf="createTrackFrom?.get('interval')?.hasError('required')">
+        دوره مورد نیاز است
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="createTrackFrom?.get('interval')?.hasError('pattern')">
+      فقط دوره های تعیین شده مجاز هستند
+    </mat-error>
+    <mat-form-field appearance="outline">
+      <mat-label>آدرس دیوار</mat-label>
+      <input
+        matInput
+        placeholder="https://divar.ir/s/..."
+        type="text"
+        id="query"
+        formControlName="query"
+      />
+      <mat-error *ngIf="createTrackFrom?.get('query')?.hasError('required')">
+        آدرس مورد نیاز است
+      </mat-error>
+      <mat-error *ngIf="createTrackFrom?.get('query')?.hasError('pattern')">
+        آدرس را بصورت صحیح وارد کنید
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="mt-3"
+      [disabled]="isLoading"
+    >
+      ایجاد پیگیری
+    </button>
+  </form>
+</div>

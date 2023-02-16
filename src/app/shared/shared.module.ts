@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { JalaliPipe } from '../core/pipe/jalali.pipe';
+import { MatSelectModule } from '@angular/material/select';
 
 const modules = [
   ReactiveFormsModule,
@@ -17,6 +18,7 @@ const modules = [
   MatIconModule,
   MatSlideToggleModule,
   MatDialogModule,
+  MatSelectModule,
   CommonModule,
 ];
 @NgModule({

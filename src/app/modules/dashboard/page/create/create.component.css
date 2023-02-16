@@ -1,0 +1,30 @@
+mat-form-field {
+  width: 400px;
+}
+
+input {
+  direction: ltr;
+}
+
+input[id='title'] {
+  text-align: right;
+}
+.form-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-track-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+}

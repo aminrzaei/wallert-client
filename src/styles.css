@@ -24,3 +24,9 @@ body {
 mat-icon {
   font-family: 'Material Icons' !important;
 }
+app-create {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}

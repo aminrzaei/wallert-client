@@ -28,6 +28,7 @@ aside {
 
 main {
   padding: 25px 20px;
+  width: 100%;
 }
 
 .hamburger {
@@ -48,7 +49,8 @@ main {
   width: 100%;
 }
 
-button[mat-button] {
+button[mat-button],
+button[mat-stroked-button] {
   width: 100%;
   margin-bottom: 3px;
   display: flex;
@@ -61,7 +63,8 @@ button[mat-button] {
 }
 @media only screen and (min-width: 650px) {
   aside {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
   .hamburger {
     display: none;

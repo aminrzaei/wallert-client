@@ -13,7 +13,7 @@
     >
     <div>
       <div class="dashboard-list-item">
-        <a routerLink="/dashboard">
+        <a routerLink="/dashboard" (click)="toggleOpen()">
           <button
             mat-button
             color="#eee"
@@ -26,7 +26,7 @@
         </a>
       </div>
       <div class="dashboard-list-item">
-        <a routerLink="/dashboard/create">
+        <a routerLink="/dashboard/create" (click)="toggleOpen()">
           <button mat-button color="#eee" routerLinkActive="btn--active">
             <mat-icon class="ml-3">add_circle_outline</mat-icon>
             <span class="mt-[1px]">پیگیری جدید</span>
@@ -57,6 +57,12 @@
             <span class="mt-[1px]">پیگیری جدید</span>
           </button>
         </a>
+      </div>
+      <div class="dashboard-list-item mt-auto" (click)="logOut()">
+        <button mat-stroked-button color="warn">
+          <mat-icon class="ml-3">exit_to_app</mat-icon>
+          <span class="mt-[1px]">خروج</span>
+        </button>
       </div>
     </aside>
     <main>
