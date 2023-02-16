@@ -12,18 +12,13 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: '',
+    path: 'dashboard',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./modules/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule,
-          ),
-      },
-    ],
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule,
+      ),
   },
   {
     path: 'auth',

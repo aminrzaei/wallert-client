@@ -5,9 +5,10 @@ import {
   DashboardComponent,
   DashboardComponentDialog,
 } from './page/dashboard/dashboard.component';
+import { CreateComponent } from './page/create/create.component';
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardComponentDialog],
+  declarations: [DashboardComponent, DashboardComponentDialog, CreateComponent],
   imports: [DashboardRoutingModule, SharedModule],
 })
 export class DashboardModule {}

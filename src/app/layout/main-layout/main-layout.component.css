@@ -42,6 +42,7 @@ main {
   right: 0;
   left: 0;
   padding: 30px 35px;
+  z-index: 2;
 }
 .dasboard-list-item {
   width: 100%;
@@ -58,7 +59,6 @@ button[mat-button] {
 .btn--active {
   background-color: #153d64;
 }
-
 @media only screen and (min-width: 650px) {
   aside {
     display: block;

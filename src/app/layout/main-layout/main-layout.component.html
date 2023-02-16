@@ -13,40 +13,50 @@
     >
     <div>
       <div class="dashboard-list-item">
-        <button mat-button color="#eee" routerLinkActive="btn--active">
-          <a routerLink="/dashboard" class="flex align-middle">
+        <a routerLink="/dashboard">
+          <button
+            mat-button
+            color="#eee"
+            routerLinkActive="btn--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <mat-icon class="ml-3">track_changes</mat-icon>
             <span class="mt-[1px]">پیگیری ها</span>
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
       <div class="dashboard-list-item">
-        <button mat-button color="#eee" routerLinkActive="btn--active">
-          <a routerLink="/dashboard/setting" class="flex align-middle">
-            <mat-icon class="ml-3">settings</mat-icon>
-            <span class="mt-[1px]">تنظیمات</span>
-          </a>
-        </button>
+        <a routerLink="/dashboard/create">
+          <button mat-button color="#eee" routerLinkActive="btn--active">
+            <mat-icon class="ml-3">add_circle_outline</mat-icon>
+            <span class="mt-[1px]">پیگیری جدید</span>
+          </button>
+        </a>
       </div>
     </div>
   </div>
   <div class="content">
     <aside>
       <div class="dashboard-list-item">
-        <button mat-button color="#eee" routerLinkActive="btn--active">
-          <a routerLink="/dashboard" class="flex align-middle">
+        <a routerLink="/dashboard">
+          <button
+            mat-button
+            color="#eee"
+            routerLinkActive="btn--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <mat-icon class="ml-3">track_changes</mat-icon>
             <span class="mt-[1px]">پیگیری ها</span>
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
       <div class="dashboard-list-item">
-        <button mat-button color="#eee" routerLinkActive="btn--active">
-          <a routerLink="/dashboard/setting" class="flex align-middle">
-            <mat-icon class="ml-3">settings</mat-icon>
-            <span class="mt-[1px]">تنظیمات</span>
-          </a>
-        </button>
+        <a routerLink="/dashboard/create">
+          <button mat-button color="#eee" routerLinkActive="btn--active">
+            <mat-icon class="ml-3">add_circle_outline</mat-icon>
+            <span class="mt-[1px]">پیگیری جدید</span>
+          </button>
+        </a>
       </div>
     </aside>
     <main>
