@@ -16,8 +16,11 @@ header {
   align-items: center;
 }
 
-header span {
+.header-title {
   font-size: 18px;
+}
+header {
+  font-size: 14px;
 }
 aside {
   display: none;
@@ -27,7 +30,8 @@ aside {
 }
 
 main {
-  padding: 25px 20px;
+  overflow-y: scroll;
+  padding: 15px 2px 70px 2px;
   width: 100%;
 }
 
@@ -37,20 +41,26 @@ main {
 }
 .small-menu {
   background-color: rgb(52, 52, 52);
+  height: 100vh;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 30px 35px;
+  padding: 18px 25px;
   z-index: 2;
+}
+.small-menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 60px;
 }
 .dasboard-list-item {
   width: 100%;
 }
 
-button[mat-button],
-button[mat-stroked-button] {
+button[mat-button] {
   width: 100%;
   margin-bottom: 3px;
   display: flex;
@@ -71,5 +81,8 @@ button[mat-stroked-button] {
   }
   .small-menu {
     display: none;
+  }
+  main {
+    padding: 25px 20px 80px 20px;
   }
 }

@@ -28,3 +28,15 @@ form {
   justify-self: center;
   align-self: center;
 }
+
+@media only screen and (max-width: 650px) {
+  mat-form-field {
+    width: 100%;
+  }
+  form {
+    width: 100%;
+  }
+  .create-track-container {
+    width: 100%;
+  }
+}

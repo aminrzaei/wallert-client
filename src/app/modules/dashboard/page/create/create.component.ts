@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { API_URL } from 'src/app/core/constants/api.constant';
 
 @Component({
@@ -17,6 +18,7 @@ export class CreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private http: HttpClient,
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {
@@ -54,10 +56,12 @@ export class CreateComponent implements OnInit {
     const { title, interval, query } = this.createTrackFrom.value;
     this.http.post(`${API_URL}/track`, { title, interval, query }).subscribe({
       next: (res: any) => {
-        this.router.navigate(['/dashboard']);
         this.isLoading = false;
+        this.toastService.success('پیگیری با موفقیت ایجاد شد 😉');
+        this.router.navigate(['/dashboard']);
       },
-      error: () => {
+      error: (err: any) => {
+        this.toastService.error(err.message);
         this.isLoading = false;
       },
     });

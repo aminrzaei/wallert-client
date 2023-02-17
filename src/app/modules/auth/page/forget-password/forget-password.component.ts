@@ -5,11 +5,11 @@ import { API_URL } from 'src/app/core/constants/api.constant';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-forget-password',
+  templateUrl: './forget-password.component.html',
+  styleUrls: ['./forget-password.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class ForgetPasswordComponent implements OnInit {
   registerForm: FormGroup;
   isLoading = false;
 
@@ -29,20 +29,20 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     const email = this.registerForm.value.email;
     this.isLoading = true;
-    this.http
-      .post(`${API_URL}/auth/send-verification-email`, { email })
-      .subscribe({
-        next: (res: any) => {
-          if (res.statusCode === 200) {
-            this.router.navigate(['/auth/sent-email']);
-          }
-          this.toastService.success(' ایمیل با موفقیت ارسال شد 😉');
-          this.isLoading = false;
-        },
-        error: (err) => {
-          this.toastService.error(err.message);
-          this.isLoading = false;
-        },
-      });
+    this.http.post(`${API_URL}/auth/forgot-password`, { email }).subscribe({
+      next: (res: any) => {
+        if (res.statusCode === 200) {
+          this.router.navigate(['/auth/sent-email']);
+        }
+        this.toastService.success(
+          ' ایمیل تغییر رمز عبور با موفقیت ارسال شد 😉',
+        );
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.toastService.error(err.message);
+        this.isLoading = false;
+      },
+    });
   }
 }

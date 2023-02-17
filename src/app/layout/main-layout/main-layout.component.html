@@ -1,17 +1,25 @@
 <div class="main">
-  <header>
-    <span
-      ><mat-icon class="hamburger ml-3" *ngIf="!isOpen" (click)="toggleOpen()"
-        >menu</mat-icon
-      >
-    </span>
-    <span>والرت</span>
+  <header class="flex justify-between">
+    <div>
+      <span
+        ><mat-icon class="hamburger ml-3" *ngIf="!isOpen" (click)="toggleOpen()"
+          >menu</mat-icon
+        >
+      </span>
+      <span class="header-title">والرت</span>
+    </div>
+    <div class="logout" (click)="logOut()">
+      <button mat-stroked-button>
+        <mat-icon class="ml-3">exit_to_app</mat-icon>
+        <span class="mt-[1px]">خروج</span>
+      </button>
+    </div>
   </header>
   <div class="small-menu" *ngIf="isOpen">
     <mat-icon class="hamburger mb-7" *ngIf="isOpen" (click)="toggleOpen()"
       >close</mat-icon
     >
-    <div>
+    <div class="small-menu-container">
       <div class="dashboard-list-item">
         <a routerLink="/dashboard" (click)="toggleOpen()">
           <button
@@ -57,12 +65,6 @@
             <span class="mt-[1px]">پیگیری جدید</span>
           </button>
         </a>
-      </div>
-      <div class="dashboard-list-item mt-auto" (click)="logOut()">
-        <button mat-stroked-button color="warn">
-          <mat-icon class="ml-3">exit_to_app</mat-icon>
-          <span class="mt-[1px]">خروج</span>
-        </button>
       </div>
     </aside>
     <main>

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { API_URL } from 'src/app/core/constants/api.constant';
 import { LocalStorageService } from 'src/app/data/service/localstorage.service';
 import { UserService } from 'src/app/data/service/user.service';
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private user: UserService,
     private lstorage: LocalStorageService,
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +43,6 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.http.post(`${API_URL}/auth/login`, { email, password }).subscribe({
       next: (res: any) => {
-        console.log(res);
-
         if (res.statusCode === 200) {
           const user = res.user;
           const accessToken = res.access_token.token;
@@ -50,11 +50,12 @@ export class LoginComponent implements OnInit {
           this.lstorage.setItem('access-token', accessToken);
           this.router.navigate(['/dashboard']);
         }
+        this.toastService.success(' ورود با موفقیت انجام شد 😉');
         this.isLoading = false;
       },
       error: (err) => {
         this.isLoading = false;
-        console.log(err);
+        this.toastService.error('خطا در ورود ایمیل یا رمز عبور صحیح نمی باشد');
       },
     });
   }

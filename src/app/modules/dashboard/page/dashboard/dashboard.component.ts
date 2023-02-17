@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HotToastService } from '@ngneat/hot-toast';
 import { API_URL } from 'src/app/core/constants/api.constant';
 import { CONTACT_TYPE } from 'src/app/core/constants/other.constant';
 import { TrackService } from 'src/app/data/service/track.service';
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient,
     public dialog: MatDialog,
     public tracks: TrackService,
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {
@@ -31,11 +33,16 @@ export class DashboardComponent implements OnInit {
     this.http.patch(`${API_URL}/track/${id}/status`, { isActive }).subscribe({
       next: (res: any) => {
         const updatedState = res.isActive;
+        const persianState = updatedState ? 'فعال' : 'غیر فعال';
         const newTracks = this.tracks.getTracks().map((track) => {
           if (track.id == id) return { ...track, isActive: updatedState };
           else return track;
         });
+        this.toastService.success(` پیگیری با موفقیت ${persianState} شد 😉`);
         this.tracks.saveTracks(newTracks);
+      },
+      error: (err: any) => {
+        this.toastService.error(err.message);
       },
     });
   }
@@ -59,6 +66,7 @@ export class DashboardComponentDialog {
     @Inject(MAT_DIALOG_DATA) public data: { id: number },
     private http: HttpClient,
     private tracks: TrackService,
+    private toastService: HotToastService,
   ) {}
   onTrackDelete(id: number): void {
     this.http.delete(`${API_URL}/track/${id}`).subscribe({
@@ -68,6 +76,10 @@ export class DashboardComponentDialog {
           else return false;
         });
         this.tracks.saveTracks(newTracks);
+        this.toastService.success('پیگیری با موفقیت حذف شد 😉');
+      },
+      error: (err: any) => {
+        this.toastService.error(err.message);
       },
     });
   }

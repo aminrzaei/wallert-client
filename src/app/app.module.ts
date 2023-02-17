@@ -9,6 +9,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [AppComponent, AuthLayoutComponent, MainLayoutComponent],
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     CoreModule,
     BrowserAnimationsModule,
+    HotToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

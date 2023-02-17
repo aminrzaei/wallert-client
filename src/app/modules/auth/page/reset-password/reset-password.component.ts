@@ -4,15 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { API_URL } from 'src/app/core/constants/api.constant';
-import { LocalStorageService } from 'src/app/data/service/localstorage.service';
-import { UserService } from 'src/app/data/service/user.service';
 
 @Component({
-  selector: 'app-complete-register',
-  templateUrl: './complete-register.component.html',
-  styleUrls: ['./complete-register.component.css'],
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.css'],
 })
-export class CompleteRegisterComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
   token: string;
   completeRegisterForm: FormGroup;
   isLoading = false;
@@ -22,8 +20,6 @@ export class CompleteRegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private user: UserService,
-    private lstorage: LocalStorageService,
     private toastService: HotToastService,
   ) {}
   ngOnInit(): void {
@@ -35,7 +31,6 @@ export class CompleteRegisterComponent implements OnInit {
       }
     });
     this.completeRegisterForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
       password: [
         '',
         [
@@ -46,27 +41,21 @@ export class CompleteRegisterComponent implements OnInit {
     });
   }
   onSubmit() {
-    const name = this.completeRegisterForm.value.name;
     const password = this.completeRegisterForm.value.password;
     const token = this.token;
     this.isLoading = true;
     this.http
-      .post(`${API_URL}/auth/register`, { name, password, token })
+      .post(`${API_URL}/auth/reset-password`, { password, token })
       .subscribe({
         next: (res: any) => {
-          if (res.statusCode === 201) {
-            const user = res.user;
-            const accessToken = res.access_token.token;
-            this.user.saveUser(user);
-            this.lstorage.setItem('access-token', accessToken);
-            this.router.navigate(['/dashboard']);
-          }
-          this.toastService.success(' ثبت نام با موفقیت انجام شد 😉');
           this.isLoading = false;
+          this.toastService.success(' تغییر رمز عبور با موفقیت انجام شد 😉');
+          this.router.navigate(['/auth/login']);
         },
         error: (err) => {
           this.isLoading = false;
           this.toastService.error(err.message);
+          this.toastService.error('خطا در تغییر رمز عبور ');
         },
       });
   }
