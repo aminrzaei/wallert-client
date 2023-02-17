@@ -31,3 +31,21 @@ app-create {
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 650px) {
+  app-login,
+  app-complete-register,
+  app-register,
+  app-forget-password,
+  app-create,
+  app-reset-password {
+    padding: 0 15px;
+    width: 100%;
+  }
+  form {
+    width: 100%;
+  }
+  mat-form-field {
+    width: 100% !important;
+  }
+}

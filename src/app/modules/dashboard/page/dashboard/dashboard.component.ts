@@ -26,6 +26,9 @@ export class DashboardComponent implements OnInit {
       next: (res: any) => {
         this.tracks.saveTracks(res.tracks);
       },
+      error: () => {
+        this.toastService.error('خطا در دریافت پیگیری ها');
+      },
     });
   }
 
