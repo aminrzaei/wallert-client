@@ -3,6 +3,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/font/dana/woff2/Dana-Regular.woff2') format('woff2'),
+    url('./assets/font/dana/woff/Dana-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 500;
+  src: url('./assets/font/dana/woff2/Dana-Medium.woff2') format('woff2'),
+    url('./assets/font/dana/woff/Dana-Medium.woff') format('woff');
+}
+
 html,
 body {
   height: 100%;
@@ -19,7 +35,7 @@ body {
 *::after,
 *::before,
 :not(mat-icon) {
-  font-family: iransans !important;
+  font-family: dana !important;
 }
 
 mat-icon {
