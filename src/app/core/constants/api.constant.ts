@@ -1,4 +1,4 @@
 export const API_URL =
   process.env['NODE_ENV'] === 'production'
-    ? 'https://production-api.example.com'
+    ? 'https://wallert.iran.liara.run'
     : 'http://localhost:3333';
